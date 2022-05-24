@@ -1,5 +1,3 @@
-/\*
-
 Plan
 
 Step1
@@ -35,6 +33,8 @@ Step 4
 
 Step 5
 -icons
-
-- get an icon pack of differnet weather patterns
-- when the weather is rainy, show a rainy icon etc
+ -download darksky/skycons .js file ✅
+ -insert it into the weatherApp folder and link it through the html file ✅
+ -write a function to convert the weather icon type from the data into a skycons recognised form ✅
+ -Link the html element to the icon given back by the function ✅
+ 
