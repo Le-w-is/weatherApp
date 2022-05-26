@@ -16,7 +16,7 @@ body {
 }
 
 .location,
-.temperature {
+.temperature-section {
     height: 30vh;
     width: 50%;
     display: flex;
@@ -24,7 +24,7 @@ body {
     align-items: center;
 }
 
-.temperature {
+.temperature-section {
     flex-direction: column;
 }
 

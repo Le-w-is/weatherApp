@@ -33,8 +33,18 @@ Step 4
 
 Step 5
 -icons
- -download darksky/skycons .js file ✅
- -insert it into the weatherApp folder and link it through the html file ✅
- -write a function to convert the weather icon type from the data into a skycons recognised form ✅
- -Link the html element to the icon given back by the function ✅
- 
+-download darksky/skycons .js file ✅
+-insert it into the weatherApp folder and link it through the html file ✅
+-write a function to convert the weather icon type from the data into a skycons recognised form ✅
+-Link the html element to the icon given back by the function ✅
+
+Stretch Goals
+-changing the colour of the background depending on the temperature
+- look through the res object to see what other features I can import
+- add a search bar so you can search other places weather/have a list of capital citys
+
+
+- be able to click on the celsius and change it to fahrenhite. it already comes in fahrenhite, just need to change the textContent. ✅
+  - add an event listener for the click of the temperature-section ✅
+  - when the temperature-section is clicked it will show fahrenhite, when pushed again returns to celsius✅
+  
