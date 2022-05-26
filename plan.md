@@ -42,6 +42,21 @@ Stretch Goals
 -changing the colour of the background depending on the temperature
 - look through the res object to see what other features I can import
 - add a search bar so you can search other places weather/have a list of capital citys
+- if you click on the icon 3 times it will show the sun and turn yellow for a set amount of time
+
+
+- Weekdays
+  - in html structure make a new div at the top of body have seven children with days of the week ✅
+  - in css align them properly ✅
+  - make them clickable 
+  -when clicked have the display show the data for that day of the week 
+      - days come back as an array called days with 15 indexes 
+      -array[1] is tomorrow
+      -find get the day data from the browser use it to find out which day tomorrow is
+      - assign array[1] to that day then the next 6 array indexes to the following six days
+  -have the page load on the current day of the week (don't know how?)
+  -when clicked on the day should be brighter than the others (like a soft glow)
+
 
 
 - be able to click on the celsius and change it to fahrenhite. it already comes in fahrenhite, just need to change the textContent. ✅

@@ -11,13 +11,10 @@ const temperatureSpan = document.querySelector('.temperature-section span');
 // an event listener for when the page loads
 window.addEventListener('load', () => {
 
-
-    // checking if we can access geolocation and getting the lat and long data for our variables
-    // if ('geolocation' in navigator) 
-
-    console.log("hi");
+    // getting the currant position and calling the functions depending on a sucess (positionFound) or an error (positionNotFound)
     navigator.geolocation.getCurrentPosition(positionFound, positionNotFound);
 
+    // if getCurrantPosition is successful this function runs
     function positionFound(position) {
         console.log(position);
         long = position.coords.longitude;
@@ -43,6 +40,7 @@ window.addEventListener('load', () => {
                 locationTimezone.textContent = timezone;
                 setIcons(icon, document.querySelector('.icon'));
 
+            // changing the temperature displayed back and forth between C and F 
                 temperatureSection.addEventListener('click', () => {
                     if (temperatureSpan.textContent === 'C') {
                         temperatureSpan.textContent = 'F';
@@ -55,12 +53,13 @@ window.addEventListener('load', () => {
             })
     }
 
+    // if getCurrantPosition is unsuccesful this function runs
     function positionNotFound(err) {
         locationTimezone.textContent = "Unable to access location";
         console.log(err);
     }
 
-
+    // getting the icons from the skycons pack file and setting the correct one to match the weather
     function setIcons(icon, iconID) {
         const skycons = new Skycons({ color: "white" });
         const currentIcon = icon.replace(/-/g, "_").toUpperCase();
@@ -69,3 +68,41 @@ window.addEventListener('load', () => {
     }
 })
 
+
+// setting variables for the days of the weeks
+const mon = document.querySelector('#mon')
+const tue = document.querySelector('#tue')
+const wed = document.querySelector('#wed')
+const thu = document.querySelector('#thu')
+const fri = document.querySelector('#fri')
+const sat = document.querySelector('#sat')
+const sun = document.querySelector('#sun')
+
+// adding clickability to the days of the week
+mon.addEventListener('click', () => {
+    console.log("mon");
+});
+
+tue.addEventListener('click', () => {
+    console.log("tue");
+});
+
+wed.addEventListener('click', () => {
+    console.log("wed");
+});
+
+thu.addEventListener('click', () => {
+    console.log("thu");
+});
+
+fri.addEventListener('click', () => {
+    console.log("fri");
+});
+
+sat.addEventListener('click', () => {
+    console.log("sat");
+});
+
+sun.addEventListener('click', () => {
+    console.log("sun");
+});

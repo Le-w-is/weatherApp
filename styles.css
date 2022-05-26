@@ -15,6 +15,15 @@ body {
     color: white;
 }
 
+.weekdays {
+height: 15vh;
+width: 75%;
+display:flex;
+justify-content: space-around;
+align-items: center;
+cursor: pointer;
+}
+
 .location,
 .temperature-section {
     height: 30vh;
