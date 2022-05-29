@@ -6,7 +6,11 @@ const locationTimezone = document.querySelector('.location-timezone');
 const temperatureDegrees = document.querySelector('.temperature-degrees');
 const temperatureSection = document.querySelector('.temperature-section');
 const temperatureSpan = document.querySelector('.temperature-section span');
+const backgroundColour = document.body.style.background;
 
+// getting the day of the week as an integer
+const dayOfWeekDigit = new Date().getDay();
+console.log(dayOfWeekDigit);
 
 // an event listener for when the page loads
 window.addEventListener('load', () => {
@@ -24,11 +28,13 @@ window.addEventListener('load', () => {
         const api = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}%2C%20${long}?unitGroup=us&key=S6EZL7D5HV45CGB4YMWLFHUAZ&contentType=json`
         fetch(api)
             .then(response => {
+                
                 return response.json();
             })
 
             // using the data from the api to set the html elemants content
             .then(data => {
+                backGroundColour(data)
                 console.log(data);
                 const temperatureC = (data.currentConditions.temp - 30) / 2 + ''; //converting fahrenhit to celsius and turning it into a string
                 const temperatureF = (data.currentConditions.temp);
@@ -39,6 +45,7 @@ window.addEventListener('load', () => {
                 temperatureDescription.textContent = description;
                 locationTimezone.textContent = timezone;
                 setIcons(icon, document.querySelector('.icon'));
+                
 
             // changing the temperature displayed back and forth between C and F 
                 temperatureSection.addEventListener('click', () => {
@@ -51,6 +58,7 @@ window.addEventListener('load', () => {
                     }
                 });
             })
+        
     }
 
     // if getCurrantPosition is unsuccesful this function runs
@@ -79,9 +87,19 @@ const sat = document.querySelector('#sat')
 const sun = document.querySelector('#sun')
 
 // adding clickability to the days of the week
-mon.addEventListener('click', () => {
-    console.log("mon");
-});
+// mon.addEventListener('click', () => {
+//     const api = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}%2C%20${long}?unitGroup=us&key=S6EZL7D5HV45CGB4YMWLFHUAZ&contentType=json`
+//     fetch(api)
+//         .then(response => {
+//             return response.json();
+//         })
+//         .then(data => {
+//             const day = dayOfWeekDigit
+//             if (day ===  ) {
+                
+//             }
+//         })
+// });
 
 tue.addEventListener('click', () => {
     console.log("tue");
@@ -106,3 +124,21 @@ sat.addEventListener('click', () => {
 sun.addEventListener('click', () => {
     console.log("sun");
 });
+
+
+// setting background colour based on temperature displayed
+
+function backGroundColour(data) {
+    let temp = (data.currentConditions.temp - 30) / 2;
+    console.log(temp)
+    if (temp < 10) {
+        document.body.style.background = "var(--cold)"
+    } else if (temp > 10) {
+        document.body.style.background = "var(--cool)"
+    } else if (temp > 15) {
+        document.body.style.background = "var(--warm)"
+    } else if (temp > 20) {
+        document.body.style.background = "var(--warm)"
+    }
+}
+    
