@@ -36,29 +36,6 @@ body {
     cursor: pointer;        
 }
 
-/* css settings for different weekdays */
-.mon{
-    text-shadow: null;
-}
-.tue {
-    text-shadow: null;
-}
-.wed {
-    text-shadow: null;
-}
-.thu {
-    text-shadow: null;
-}
-.fri {
-    text-shadow: null;
-}
-.sat {
-    text-shadow: null;
-}
-.sun {
-    text-shadow: null;
-}
-
 /* css settings for different html elemants by class name */
 .location,
 .temperature-section {
