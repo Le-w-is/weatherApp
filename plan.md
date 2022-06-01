@@ -75,3 +75,9 @@ to do
 // - set days 0 as the current day of the week have the next day be days 1
 // -
 // it must change the elements to show the date for that day of the week
+
+
+Serperation of concerns
+ - take the geolocation function out of the window load and day click functions
+ - lat and long to have global scope
+ - seperate the dayGlow function and the get weather data function
