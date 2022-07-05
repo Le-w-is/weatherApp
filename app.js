@@ -11,6 +11,9 @@ const weekdays = document.querySelector('.weekdays').children
 const dayOfWeekDigit = new Date().getDay();
 
 
+
+
+
 // an event listener for when the page loads
 window.addEventListener('load', () => {
 
@@ -126,7 +129,7 @@ function backGroundColour(data) {
 
 // setting event listners for each day of the week that will call on the future weather function
 
-mon.addEventListener('click', futureWeather);
+mon.addEventListener('click', futureWeather(lat, long));
 tue.addEventListener('click', futureWeather);
 wed.addEventListener('click', futureWeather);
 thu.addEventListener('click', futureWeather);
@@ -138,8 +141,8 @@ sun.addEventListener('click', futureWeather);
 // the future weather function that sets the day that was clicked on to glow then matches 
 //the day clicked on with a day in the days array in the api data and sets the html elemants to the new data
 
-function futureWeather(day) {
-    console.log(day)
+function futureWeather(day, lat, long) {
+    console.log(day, lat, long, "hello")
     for (i = 0; i < weekdays.length; i++) {
         if (day.srcElement.textContent === "Mon") {
             weekdays[i].style.textShadow = null;
@@ -164,29 +167,41 @@ function futureWeather(day) {
             sun.style.textShadow = "var(--glow)";
         }
     }
-    const api = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}%2C%20${long}?unitGroup=us&key=S6EZL7D5HV45CGB4YMWLFHUAZ&contentType=json`
-    fetch(api)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            backGroundColour(data)
-            for (i = 0; i < data.days.length; i++) {
-                const date = data.days[i].datetime.toString();
-                const newDate = new Date(date + "Z")
-                const newDay = newDate + ''
-                const dayString = newDay.toUpperCase().substring(0, 3);
-                if (day.srcElement.id.toUpperCase() === dayString) {
-                    const temperatureC = (data.days[i].temp - 30) / 2 + '';
-                    const temperatureF = (data.days[i].temp);
-                    const icon = data.days[i].icon;
-                    const description = data.days[i].description;
-                    const timezone = data.timezone;
-                    temperatureDegrees.textContent = temperatureC.substring(0, 4);
-                    temperatureDescription.textContent = description;
-                    locationTimezone.textContent = timezone;
-                    setIcons(icon, document.querySelector('.icon'));
+
+    navigator.geolocation.getCurrentPosition(positionFound);
+
+
+
+    function positionFound(position) {
+        console.log(position);
+        const long = position.coords.longitude;
+        const lat = position.coords.latitude;
+
+
+        const api = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat}%2C%20${long}?unitGroup=us&key=S6EZL7D5HV45CGB4YMWLFHUAZ&contentType=json`
+        fetch(api)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                backGroundColour(data)
+                for (i = 0; i < data.days.length; i++) {
+                    const date = data.days[i].datetime.toString();
+                    const newDate = new Date(date + "Z")
+                    const newDay = newDate + ''
+                    const dayString = newDay.toUpperCase().substring(0, 3);
+                    if (day.srcElement.id.toUpperCase() === dayString) {
+                        const temperatureC = (data.days[i].temp - 30) / 2 + '';
+                        const temperatureF = (data.days[i].temp);
+                        const icon = data.days[i].icon;
+                        const description = data.days[i].description;
+                        const timezone = data.timezone;
+                        temperatureDegrees.textContent = temperatureC.substring(0, 4);
+                        temperatureDescription.textContent = description;
+                        locationTimezone.textContent = timezone;
+                        setIcons(icon, document.querySelector('.icon'));
+                    }
                 }
-            }
-        })
-};
+            })
+    }
+}
