@@ -129,7 +129,7 @@ function backGroundColour(data) {
 
 // setting event listners for each day of the week that will call on the future weather function
 
-mon.addEventListener('click', futureWeather(lat, long));
+mon.addEventListener('click', futureWeather);
 tue.addEventListener('click', futureWeather);
 wed.addEventListener('click', futureWeather);
 thu.addEventListener('click', futureWeather);
