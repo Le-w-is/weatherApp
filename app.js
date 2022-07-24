@@ -141,8 +141,7 @@ sun.addEventListener('click', futureWeather);
 // the future weather function that sets the day that was clicked on to glow then matches 
 //the day clicked on with a day in the days array in the api data and sets the html elemants to the new data
 
-function futureWeather(day, lat, long) {
-    console.log(day, lat, long, "hello")
+function futureWeather(day) {
     for (i = 0; i < weekdays.length; i++) {
         if (day.srcElement.textContent === "Mon") {
             weekdays[i].style.textShadow = null;
